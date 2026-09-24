@@ -3,6 +3,7 @@
 require_once "TpBank.php";
 require_once "ABBank.php";
 
+
 $tpBank1 = new TpBank("Nguyễn Văn Long", "longnv", "011231222", 12000000);
 $tpBank1->rutTien(1000000);
 $tpBank1->thongTinTaiKhoan();

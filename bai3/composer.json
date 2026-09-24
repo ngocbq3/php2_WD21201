@@ -1,0 +1,16 @@
+{
+    "name": "bqngoc/bai3",
+    "authors": [
+        {
+            "name": "ngocbq3",
+            "email": "ngocbq3@fe.edu.vn"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Controller\\" : "Controller/",
+            "Model\\"   : "Model/"
+        }
+    }
+}
