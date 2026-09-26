@@ -4,20 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc
+class ComposerStaticInitd873490ed73ce32133210345f11365cd
 {
     public static $prefixLengthsPsr4 = array (
         'e' =>
         array (
             'eftec\\bladeone\\' => 15,
         ),
-        'M' =>
+        'A' =>
         array (
-            'Model\\' => 6,
-        ),
-        'C' =>
-        array (
-            'Controller\\' => 11,
+            'App\\' => 4,
         ),
     );
 
@@ -26,13 +22,19 @@ class ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc
         array (
             0 => __DIR__ . '/..' . '/eftec/bladeone/lib',
         ),
-        'Model\\' =>
+        'App\\' =>
         array (
-            0 => __DIR__ . '/../..' . '/Model',
+            0 => __DIR__ . '/../..' . '/app',
         ),
-        'Controller\\' =>
+    );
+
+    public static $prefixesPsr0 = array (
+        'B' =>
         array (
-            0 => __DIR__ . '/../..' . '/Controller',
+            'Bramus' =>
+            array (
+                0 => __DIR__ . '/..' . '/bramus/router/src',
+            ),
         ),
     );
 
@@ -43,9 +45,10 @@ class ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit07bab39463aaccbd2c7a33dfc490b6dc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd873490ed73ce32133210345f11365cd::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd873490ed73ce32133210345f11365cd::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd873490ed73ce32133210345f11365cd::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitd873490ed73ce32133210345f11365cd::$classMap;
 
         }, null, ClassLoader::class);
     }
