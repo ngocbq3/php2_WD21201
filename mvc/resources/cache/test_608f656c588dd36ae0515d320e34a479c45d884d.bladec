@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('title'); ?>
+ Trang mẫu
+<?php $this->stopSection(); ?>
 
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <title>Test view</title>
-</head>
+<?php $this->startSection('content'); ?>
+ <h1>Trang mẫu để kiểm tra view</h1>
+<?php $this->stopSection(); ?>
 
-<body>
- <h1>Kiểm tra view có hoạt động không</h1>
-</body>
-
-</html>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('app'); } ?>
