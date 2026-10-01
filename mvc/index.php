@@ -1,5 +1,9 @@
 <?php
 // Require composer autoloader
+
+use App\Models\Article;
+
+require_once __DIR__ . "/env.php";
 require __DIR__ . '/vendor/autoload.php';
 
 
@@ -14,10 +18,10 @@ $router->get("contact", function () {
     echo "Contact Page";
 });
 $router->get("/", function () {
-    echo "Home Page";
+    var_dump(Article::find(4));
 });
 
-$router->get('/test', 'App\Controllers\TestController@index');
+$router->get('/test', 'App\Controllers\TestController@index1');
 
 //404 not found
 $router->set404(function () {
