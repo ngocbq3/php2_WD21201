@@ -19,7 +19,16 @@ $router->get("contact", function () {
     echo "Contact Page";
 });
 $router->get("/", function () {
-    var_dump(Article::find(4));
+    //Test thêm mới
+    $data = [
+        'title' => 'Iphone 18 vừa ra mắt update',
+        'image' => '',
+        'description' => 'Iphone 18 pro',
+        'content' => 'Iphone 18 pro dùng bộ nhớ của trung quốc',
+        'category_id' => 3
+    ];
+
+    var_dump(Article::update(5, $data));
 });
 
 $router->get('/test', TestController::class . '@index');

@@ -49,6 +49,39 @@ class BaseModel extends DB
         $stmt = $model->conn->prepare($sql);
         $stmt->execute($data);
 
-        return $model->conn->lastInsertId();
+        return $model->conn->lastInsertId(); //trả về id mới thêm
+    }
+
+    //Phương thức cập nhật dữ liệu
+    public static function update($id, $data)
+    {
+        $model = new static;
+
+        //khai báo mảng chưa dữ liệu placeholder
+        $sets = [];
+        foreach ($model->fillable as $field) {
+            $sets[] = "$field = :$field";
+        }
+        //Chuyển mảng sets thành chuỗi
+        $sqlSet = implode(', ', $sets);
+
+        //Câu lệnh SQL UPDATE
+        $sql = "UPDATE $model->table SET $sqlSet WHERE $model->primaryKey=:$model->primaryKey";
+
+        $stmt = $model->conn->prepare($sql);
+        $data["$model->primaryKey"] = $id;
+
+        return $stmt->execute($data);
+    }
+
+    //Xóa dữ liệu theo id
+    public static function delete($id)
+    {
+        $model = new static;
+        $sql = "DELETE FROM $model->table WHERE $model->primaryKey=:$model->primaryKey";
+
+        $stmt = $model->conn->prepare($sql);
+
+        return $stmt->execute(["$model->primaryKey" => $id]);
     }
 }
