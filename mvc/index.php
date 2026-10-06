@@ -1,6 +1,7 @@
 <?php
 // Require composer autoloader
 
+use App\Controllers\Admin\ArticleController;
 use App\Controllers\TestController;
 use App\Models\Article;
 
@@ -32,6 +33,10 @@ $router->get("/", function () {
 });
 
 $router->get('/test', TestController::class . '@index');
+
+
+//Admin
+$router->get('admin/articles', ArticleController::class . '@index');
 
 //404 not found
 $router->set404(function () {
