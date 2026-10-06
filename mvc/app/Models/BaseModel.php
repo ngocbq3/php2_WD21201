@@ -8,6 +8,7 @@ class BaseModel extends DB
 {
     protected $table;
     protected $primaryKey = 'id';
+    protected $fillable = []; //mảng tên trường của bảng
 
     //Lấy tất cả dữ liệu của 1 bảng
     public static function  all()
@@ -31,5 +32,23 @@ class BaseModel extends DB
         $stmt->execute(["$model->primaryKey" => $id]);
         $result = $stmt->fetchAll(PDO::FETCH_CLASS);
         return $result[0] ?? [];
+    }
+
+    //Phương thức thêm mới dữ liệu
+    public static function create($data)
+    {
+        $model = new static;
+
+        //Chuyển mảng dữ liệu của fillable sang chuỗi
+        $fields = implode(', ', $model->fillable);
+        $values = ':' . implode(', :', $model->fillable);
+
+        //Ghép vào câu lệnh SQL INSERT
+        $sql = "INSERT INTO $model->table($fields) VALUES($values)";
+
+        $stmt = $model->conn->prepare($sql);
+        $stmt->execute($data);
+
+        return $model->conn->lastInsertId();
     }
 }

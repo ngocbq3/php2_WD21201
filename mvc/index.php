@@ -1,6 +1,7 @@
 <?php
 // Require composer autoloader
 
+use App\Controllers\TestController;
 use App\Models\Article;
 
 require_once __DIR__ . "/env.php";
@@ -21,7 +22,7 @@ $router->get("/", function () {
     var_dump(Article::find(4));
 });
 
-$router->get('/test', 'App\Controllers\TestController@index1');
+$router->get('/test', TestController::class . '@index');
 
 //404 not found
 $router->set404(function () {
