@@ -11,7 +11,7 @@
                 <th>ID</th>
                 <th>Title</th>
                 <th>Image</th>
-                <th>Category_ID</th>
+                <th>Category Name</th>
                 <th>
                     <a href="">Create</a>
                 </th>
@@ -21,7 +21,7 @@
                     <td><?= $article->id ?></td>
                     <td><?= $article->title ?></td>
                     <td><?= $article->image ?></td>
-                    <td><?= $article->category_id ?></td>
+                    <td><?= $article->name ?></td>
                     <td>
                         Edit/Delete
                     </td>
