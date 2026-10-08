@@ -37,6 +37,11 @@ $router->get('/test', TestController::class . '@index');
 
 //Admin
 $router->get('admin/articles', ArticleController::class . '@index');
+$router->get('/admin/articles/create', ArticleController::class . "@create");
+$router->post('/admin/articles/create', ArticleController::class . "@store");
+
+$router->get('/admin/articles/edit/{id}', ArticleController::class . '@edit');
+$router->post('/admin/articles/edit/{id}', ArticleController::class . '@edit');
 
 //404 not found
 $router->set404(function () {

@@ -13,14 +13,14 @@
                 <th>Image</th>
                 <th>Category Name</th>
                 <th>
-                    <a href="">Create</a>
+                    <a href="{{ BASE_URL . 'admin/articles/create' }} ">Create</a>
                 </th>
             </tr>
             @foreach ($articles as $article)
                 <tr>
                     <td><?= $article->id ?></td>
                     <td><?= $article->title ?></td>
-                    <td><?= $article->image ?></td>
+                    <td><img src="{{ BASE_URL . $article->image }}" width="100" alt=""></td>
                     <td><?= $article->name ?></td>
                     <td>
                         Edit/Delete
