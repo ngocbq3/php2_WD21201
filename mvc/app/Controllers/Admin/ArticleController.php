@@ -29,8 +29,31 @@ class ArticleController extends Controller
 
         $posts['image'] = '';
 
+        //validator
+        $errors = []; //Lưu thông tin lỗi
+        if ($posts['title'] == '' || trim($posts['title']) == '') {
+            $errors['title'] = "Bạn cần nhập dữ liệu";
+        }
+
         //Thêm ảnh
         $file = $_FILES['image'];
+        //Quy đinh đinh dạng ảnh được phép
+        $img_ext = ['jpg', 'jpeg', 'gif'];
+
+        if ($file['size'] > 0) {
+            //Lấy định dạng file
+            $file_ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+            if (!in_array($file_ext, $img_ext)) {
+                $errors['image'] = "Bạn cần nhập đúng định dạng";
+            }
+        }
+
+        //Trường hợp validate có lỗi
+        if ($errors) {
+            $categories = Category::all();
+            return $this->view('admin.articles.create', compact('categories', 'errors', 'posts'));
+        }
+
         if ($file['size'] > 0) {
             $path_image = 'images/' . $file['name'];
             move_uploaded_file($file['tmp_name'], ROOT_DIR . '/' . $path_image);
@@ -71,5 +94,12 @@ class ArticleController extends Controller
             'admin.articles.edit',
             compact('post', 'categories')
         );
+    }
+
+    public function delete($id)
+    {
+        Article::delete($id);
+        $_SESSION['message'] = "Xóa dữ liệu thành công";
+        return header("location: " . BASE_URL . 'admin/articles');
     }
 }

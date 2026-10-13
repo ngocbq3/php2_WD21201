@@ -31,7 +31,7 @@
                         <a href="{{ BASE_URL . '/admin/articles/edit/' . $article->id }}">Edit</a>
 
                         <form action="{{ BASE_URL . '/admin/articles/delete/' . $article->id }}" method="post">
-                            <button type="submit">Delete</button>
+                            <button type="submit" onclick="return confirm('Bạn có muốn xóa không?')">Delete</button>
                         </form>
                     </td>
                 </tr>

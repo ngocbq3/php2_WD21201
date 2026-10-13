@@ -44,6 +44,8 @@ $router->post('/admin/articles/create', ArticleController::class . "@store");
 $router->get('/admin/articles/edit/{id}', ArticleController::class . '@edit');
 $router->post('/admin/articles/edit/{id}', ArticleController::class . '@edit');
 
+$router->post('/admin/articles/delete/{id}', ArticleController::class . '@delete');
+
 //404 not found
 $router->set404(function () {
     header('HTTP/1.1 404 Not Found');
