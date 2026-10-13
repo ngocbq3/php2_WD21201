@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Require composer autoloader
 
 use App\Controllers\Admin\ArticleController;

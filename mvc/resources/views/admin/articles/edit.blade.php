@@ -35,7 +35,7 @@
             <textarea name="content" cols="30" rows="6">{{ $post->content }}</textarea>
         </div>
         <div class="control">
-            <button type="submit">Create New</button>
+            <button type="submit">Update</button>
         </div>
     </form>
 @endsection

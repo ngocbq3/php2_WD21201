@@ -6,6 +6,11 @@
 
 @section('content')
     <div>
+        @if ($message != '')
+            <div style="color: green">
+                {{ $message }}
+            </div>
+        @endif
         <table border="1">
             <tr>
                 <th>ID</th>
@@ -23,7 +28,11 @@
                     <td><img src="{{ BASE_URL . $article->image }}" width="100" alt=""></td>
                     <td><?= $article->name ?></td>
                     <td>
-                        Edit/Delete
+                        <a href="{{ BASE_URL . '/admin/articles/edit/' . $article->id }}">Edit</a>
+
+                        <form action="{{ BASE_URL . '/admin/articles/delete/' . $article->id }}" method="post">
+                            <button type="submit">Delete</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
